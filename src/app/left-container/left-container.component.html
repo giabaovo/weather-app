@@ -1,0 +1,41 @@
+<div class="left-container">
+    <div class="left-container-nav-bar">
+        <div class="search-icon" (click)="onSearchClick(location.value)"><fa-icon class="fa-xs" [icon]="faMagnifyingGlass"></fa-icon></div>
+        <div class="search-input"><input type="text" placeholder="Search for places ..." #location (keyup.Enter)="onSearchClick(location.value)"></div>
+        <div class="location-icon" (click)="onSearchClick(location.value)"><fa-icon class="fa-xs" [icon]="faLocation"></fa-icon></div>
+    </div>
+    <div class="left-container-data-box">
+        <div class="left-container-temp-data">
+            <div class="left-container-temp-img"><img [src]="weatherService.temperatureData.summaryImage" alt="summaryImage"></div>
+            <div class="left-container-temp-value">
+                {{ weatherService.celsiusTab == true ? weatherService.temperatureData.temperature : weatherService.celsiusToFahrenheit(weatherService.temperatureData.temperature) }}
+                <sup>{{ weatherService.celsiusTab == true ? "°C" : "°F" }}</sup>
+            </div>
+            <div class="left-container-day-time">
+                {{ weatherService.temperatureData.day }}, 
+                <span>{{ weatherService.temperatureData.time }}</span>
+            </div>
+        </div>
+        <div class="dividing-line"></div>
+        <div class="left-container-other-details">
+            <div class="left-container-temp-summary">
+                <div class="left-container-temp-summary-img"><fa-icon class="fa-xs" [icon]="faCloud"></fa-icon></div>
+                <div class="left-container-temp-summary-value">
+                    {{ weatherService.temperatureData.summaryPhrase }}
+                </div>
+            </div>
+            <div class="left-container-rain-stats">
+                <div class="left-container-rain-stats-img"><fa-icon class="fa-xs" [icon]="faCloudRain"></fa-icon></div>
+                <div class="left-container-rain-stats-value">
+                    Rain - {{ weatherService.temperatureData.rainPercent }}
+                </div>
+            </div>
+            <div class="left-container-location-details">
+                <div class="left-container-location-img"><img src="./../../assets/newyork.jpg" alt=""></div>
+                <div class="left-container-location-name">
+                    {{ weatherService.temperatureData.location }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
